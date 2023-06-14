@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+
+import '../BackgroundComponents/app_state.dart';
+import '../src/authentication.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -35,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
         body: Row(
           children: [
             Consumer<ApplicationState>(
-              builder: (context, appstate, _) => AuthFunc(
+              builder: (context, appState, _) => AuthFunc(
                   loggedIn: appState.loggedIn,
                   signOut: () {
                     FirebaseAuth.instance.signOut();

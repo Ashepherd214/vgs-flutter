@@ -40,12 +40,12 @@ final _router = GoRouter(
                     },
                   );
                   context.push(uri.toString());
-                 })),
-                 AuthStateChangeAction(((context, state) {
+                })),
+                AuthStateChangeAction(((context, state) {
                   final user = switch (state) {
                     SignedIn state => state.user,
                     UserCreated state => state.credential.user,
-                    _=> null
+                    _ => null
                   };
                   if (user == null) {
                     return;
@@ -56,12 +56,12 @@ final _router = GoRouter(
                   if (!user.emailVerified) {
                     user.sendEmailVerification();
                     const snackBar = SnackBar(
-                      content: Text(
-                        'Please check your email to verify your email address'));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        content: Text(
+                            'Please check your email to verify your email address'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                   context.pushReplacement('/');
-                 })),
+                })),
               ],
             );
           },
@@ -77,7 +77,7 @@ final _router = GoRouter(
               },
             ),
           ],
-        )
+        ),
         GoRoute(
           path: 'profile',
           builder: (context, state) {
